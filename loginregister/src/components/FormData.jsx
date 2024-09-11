@@ -10,36 +10,54 @@ export default function FormData() {
   const handleClick=(e)=>{
     e.preventDefault();
     console.log('form',form)
+    setForm({
+      fname:"",email:"",password:""
+    })
+    
   }
 
 
   const handleChange=(event)=>{
-        const name=event.target.name
-        const value=event.target.value
-        setForm((e)=>({
+        const {name,value}=event.target
+        setForm((preform)=>({
           ...form,[name]:value
         }))
+       
+      
+
   }
+
+
 
   return (
     <div>
       <form onSubmit={handleClick}>
         <h2>{IsSignup?"SignUp":"Login"}</h2>
-        <label>Name</label>
-        <div>
-            <input  
-            type='text'
-            placeholder='Enter Name'
-            value={form.fname}
-            onChange={handleChange}
-            required
-            />
-        </div>
+        {
+          IsSignup && (
+            <>
+            <label>Name</label> 
+            <div>
+              <input  
+              type='text'
+              placeholder='Enter Name'
+              name='fname'
+              value={form.fname}
+              onChange={handleChange}
+              required
+              />
+          </div>
+        
+            </>
+          )
+        }
+        
         <label>Email</label>
          <div>
             <input 
             type='email' 
             placeholder='Enter Email'
+            name='email'
             value={form.email}
             onChange={handleChange}
             required
@@ -49,6 +67,7 @@ export default function FormData() {
          <div>
             <input 
             type='password'
+            name='password'
             placeholder='*********'
             value={form.password}
             onChange={handleChange}
@@ -64,7 +83,7 @@ export default function FormData() {
         style={{color:"blue"}}
         onClick={()=>setIsSignUp(!IsSignup)}>
             
-            {IsSignup?"SignUp":"Login"}
+            {IsSignup?"Login":"Signup"}
         </span>
       </p>
       
