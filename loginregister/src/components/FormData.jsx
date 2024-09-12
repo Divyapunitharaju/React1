@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './FormData.css'
 
 export default function FormData() {
 
@@ -20,7 +21,7 @@ export default function FormData() {
   const handleChange=(event)=>{
         const {name,value}=event.target
         setForm((preform)=>({
-          ...form,[name]:value
+          ...preform,[name]:value
         }))
        
       
@@ -30,14 +31,14 @@ export default function FormData() {
 
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={handleClick}>
         <h2>{IsSignup?"SignUp":"Login"}</h2>
         {
           IsSignup && (
             <>
             <label>Name</label> 
-            <div>
+            <div id='input'>
               <input  
               type='text'
               placeholder='Enter Name'
@@ -53,7 +54,7 @@ export default function FormData() {
         }
         
         <label>Email</label>
-         <div>
+         <div id='input'>
             <input 
             type='email' 
             placeholder='Enter Email'
@@ -64,7 +65,7 @@ export default function FormData() {
             />
          </div>
          <label>Password</label>
-         <div>
+         <div id='input'>
             <input 
             type='password'
             name='password'
@@ -74,16 +75,17 @@ export default function FormData() {
             required
             />
          </div>
-         <button type='submit' >{IsSignup?"SignUp":"Login"}</button>
+         <div className='button'><button type='submit' >{IsSignup?"SignUp":"Login"}</button></div>
+         
         
       </form>
       <p>
         {IsSignup?"Already have an account":"Dont't have an account"}
         <span 
-        style={{color:"blue"}}
+        style={{color:"blue" }}
         onClick={()=>setIsSignUp(!IsSignup)}>
             
-            {IsSignup?"Login":"Signup"}
+           <span style={{cursor:"pointer"}}>  {IsSignup?"Login":"Signup"}</span>
         </span>
       </p>
       
