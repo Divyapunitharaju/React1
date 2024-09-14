@@ -3,6 +3,7 @@ import './movie.css'
 import { useState } from 'react'
 import { useEffect } from 'react';
 import MovieList from './MovieList';
+import MovieDetails from './MovieDetails';
 
 const imdID = '4eb4233b';
 
@@ -44,6 +45,7 @@ export default function MoviePage() {
     <div className='grid'>
         <MovieList movies={movies} />
     </div>
+
 </div>
 
   )
