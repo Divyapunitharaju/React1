@@ -13,9 +13,26 @@ export default function Meal() {
     const fetchApi=(alpha)=>{
         const urlapi=`https://www.themealdb.com/api/json/v1/1/search.php?f=${alpha}`
 
-            fetch(urlapi)
-            .then((res)=>res.json())
-            .then((data)=>setMeal(data.meals))
+        fetch(urlapi)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not OK');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          setMeal(data.meals)
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      
+
+
+            // fetch(urlapi)
+            // .then((res)=>res.json())
+            // .then((data)=>setMeal(data.meals))
     }
      
     useEffect(()=>{
