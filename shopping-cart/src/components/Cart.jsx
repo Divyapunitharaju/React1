@@ -3,7 +3,7 @@ import { CartContext } from '../components/CartContext'
 
 export default function Cart() {
 
-   const {cart} =useContext(CartContext)
+   const {cart,removeCart} =useContext(CartContext)
 
 
   return (
@@ -11,7 +11,11 @@ export default function Cart() {
     <div>
        {
         cart.map((item ,index)=>(
-          <div key={index}>{item}</div>
+          <div key={index}>
+            {item.name}
+            <button onClick={()=>removeCart(item.itemId)}>Remove Cart</button>
+          </div>
+
         ))
        }
     </div>
