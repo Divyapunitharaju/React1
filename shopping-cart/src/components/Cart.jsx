@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../components/CartContext'
 
 export default function Cart() {
+
+   const {cart} =useContext(CartContext)
+
+
   return (
-    <div>Cart</div>
+        
+    <div>
+       {
+        cart.map((item ,index)=>(
+          <div key={index}>{item}</div>
+        ))
+       }
+    </div>
+
   )
 }
