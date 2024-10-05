@@ -8,7 +8,7 @@ function App() {
   useEffect(()=>{
     setCount(2);
 
-
+   //cleanup function
     return ()=>{
       setCount(null)
       console.log("clean")
