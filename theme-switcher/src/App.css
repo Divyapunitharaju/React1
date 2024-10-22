@@ -1,0 +1,19 @@
+.container.light {
+  background-color: #fff;
+  color: #333;
+
+}
+.container{
+  height: 100vh;
+}
+
+.container.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+button {
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
